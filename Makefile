@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_atoi.c \
+SRCS_NAMES = ft_atoi.c \
       ft_bzero.c \
       ft_isalnum.c \
       ft_isalpha.c \
@@ -79,7 +79,12 @@ SRC = ft_atoi.c \
 	  ft_lstappend.c \
 	  ft_strchange.c
 
-OBJ = $(SRC:.c=.o)
+
+SRCS_DIR = srcs/
+
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAMES))
+
+OBJS = $(SRCS:.c=.o)
 
 CC = clang
 
@@ -94,14 +99,14 @@ HEADERS_NAMES = get_next_line.h \
 
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_NAMES))
 
-all: $(NAME)
-
 GREEN = \033[32;1m
 
 WHITE = \033[0m
 
-$(NAME): $(OBJ) $(HEADERS) 
-	@ar rc $(NAME) $(OBJ)
+all: $(NAME)
+
+$(NAME): $(OBJS) $(HEADERS) 
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "$(GREEN)$(NAME) generated$(WHITE)"
 
@@ -109,7 +114,7 @@ $(NAME): $(OBJ) $(HEADERS)
 	@$(CC) $(CFLAGS) -I$(HEADERS_DIR) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJS)
 	@echo "deleting objects files"
 
 fclean: clean
