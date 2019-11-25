@@ -92,19 +92,19 @@ static int		ft_line(char *buf, t_lst *elem, char *tempo2, char **line)
 		while (tempo2[i] != '\n')
 			i++;
 		if ((elem->tempo = ft_strdup(&tempo2[i + 1])) == NULL)
-			return (ERROR);
+			return (ERROR_GNL);
 		tempo2[i] = '\0';
 		if ((*line = ft_strdup(tempo2)) == NULL)
-			return (ERROR);
+			return (ERROR_GNL);
 		ft_strdel(&tempo2);
-		return (STILL);
+		return (STILL_GNL);
 	}
 	else if (tempo2[0] != '\0')
 	{
 		if ((*line = ft_strdup(tempo2)) == NULL)
-			return (ERROR);
+			return (ERROR_GNL);
 		ft_strdel(&tempo2);
-		return (STILL);
+		return (STILL_GNL);
 	}
 	ft_strdel(&tempo2);
 	return ((int)good_elem(elem->fd, 1));
@@ -118,23 +118,23 @@ int				get_next_line(const int fd, char **line)
 	char			*tempo2;
 
 	nb_c = 1;
-	if (fd < 0 || !line || BUFF_SIZE < 1 || !(elem = good_elem(fd, 0)))
-		return (ERROR);
-	if ((buf = ft_strnew(BUFF_SIZE)) == NULL)
-		return (ERROR);
+	if (fd < 0 || !line || BUFF_SIZE_GNL < 1 || !(elem = good_elem(fd, 0)))
+		return (ERROR_GNL);
+	if ((buf = ft_strnew(BUFF_SIZE_GNL)) == NULL)
+		return (ERROR_GNL);
 	if ((tempo2 = NULL) == NULL && elem->tempo != NULL)
 	{
 		if ((tempo2 = ft_strdup(elem->tempo)) == NULL)
-			return (ERROR);
+			return (ERROR_GNL);
 		ft_strdel(&(elem->tempo));
 	}
 	while (nb_c && ft_strchr(tempo2, '\n') == NULL)
 	{
-		if ((nb_c = read(elem->fd, buf, BUFF_SIZE)) == -1)
-			return (ERROR);
+		if ((nb_c = read(elem->fd, buf, BUFF_SIZE_GNL)) == -1)
+			return (ERROR_GNL);
 		buf[nb_c] = '\0';
 		if ((tempo2 = ft_strjoin_f(tempo2, buf, 1, 0)) == NULL)
-			return (ERROR);
+			return (ERROR_GNL);
 	}
 	return (ft_line(buf, elem, tempo2, line));
 }

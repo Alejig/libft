@@ -13,9 +13,9 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 4096
-# define ERROR -1
-# define STILL 1
+# define BUFF_SIZE_GNL 4096
+# define ERROR_GNL -1
+# define STILL_GNL 1
 
 typedef struct					s_lst
 {
