@@ -79,7 +79,6 @@ SRCS_NAMES = ft_atoi.c \
 	  ft_lstappend.c \
 	  ft_strchange.c
 
-
 SRCS_DIR = srcs/
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAMES))
