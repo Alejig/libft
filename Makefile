@@ -32,7 +32,11 @@ SRCS_DIR = srcs/
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAMES))
 
-OBJS = $(SRCS:.c=.o)
+OBJS_DIR = objs/
+
+OBJS_NAMES = $(SRCS_NAMES:.c=.o)
+
+OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES))
 
 CC = clang
 
@@ -53,16 +57,19 @@ WHITE = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS) 
+$(NAME): $(OBJS_DIR) $(OBJS) $(HEADERS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "$(GREEN)$(NAME) generated$(WHITE)"
 
-%.o: %.c
+$(OBJS_DIR):
+	@mkdir $(OBJS_DIR)
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 	@$(CC) $(CFLAGS) -I$(HEADERS_DIR) -o $@ -c $<
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS_DIR)
 	@echo "deleting objects files"
 
 fclean: clean
