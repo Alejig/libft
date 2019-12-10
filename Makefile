@@ -70,7 +70,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo "deleting objects files"
+	@echo "deleting $(OBJS_DIR)"
 
 fclean: clean
 	@rm -rf $(NAME)
