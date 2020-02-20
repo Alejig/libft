@@ -27,32 +27,18 @@ SRCS_NAMES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
              ft_lstiter.c ft_lstmap.c ft_power.c ft_sqrt.c \
              ft_lstsize.c ft_strreplace.c ft_puterr.c ft_strjoin_f.c \
              ft_strchr_i.c get_next_line.c ft_lstappend.c ft_strchange.c
-
 SRCS_DIR = srcs/
-
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAMES))
-
 OBJS_DIR = objs/
-
 OBJS_NAMES = $(SRCS_NAMES:.c=.o)
-
 OBJS = $(addprefix $(OBJS_DIR), $(OBJS_NAMES))
-
 CC = clang
-
 CFLAGS = -Wall -Wextra -Werror
-
 NAME = libft.a
-
 HEADERS_DIR = includes/
-
-HEADERS_NAMES = get_next_line.h \
-                libft.h
-
+HEADERS_NAMES = get_next_line.h libft.h
 HEADERS = $(addprefix $(HEADERS_DIR), $(HEADERS_NAMES))
-
 GREEN = \033[32;1m
-
 WHITE = \033[0m
 
 all: $(NAME)
