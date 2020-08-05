@@ -6,7 +6,7 @@
 #    By: aljigmon <aljigmon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 15:08:21 by aljigmon          #+#    #+#              #
-#    Updated: 2019/09/28 15:23:26 by aljigmon         ###   ########.fr        #
+#    Updated: 2020/08/05 11:23:20 by aljigmon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS_NAMES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
              ft_lstiter.c ft_lstmap.c ft_power.c ft_sqrt.c \
              ft_lstsize.c ft_strreplace.c ft_puterr.c ft_strjoin_f.c \
              ft_strchr_i.c get_next_line.c ft_lstappend.c ft_strchange.c
-SRCS_DIR = srcs/
+SRCS_DIR = sources/
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAMES))
 OBJS_DIR = objs/
 OBJS_NAMES = $(SRCS_NAMES:.c=.o)
